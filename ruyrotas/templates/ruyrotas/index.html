@@ -1,0 +1,11 @@
+{% extends 'ruyrotas/base.html' %}
+
+{% block title %}Início - RuyRotas{% endblock %}
+
+{% block content %}
+<div class="container text-center mt-5">
+    <h1>Bem-vindo ao RuyRotas</h1>
+    <p>Selecione uma opção no menu ou cadastre-se em uma linha.</p>
+    <a href="{% url 'cad_linhas' %}" class="btn btn-primary">Cadastrar em Linha</a>
+</div>
+{% endblock %}
