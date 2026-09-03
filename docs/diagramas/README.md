@@ -1,0 +1,1 @@
+[Diagrama de caso de uso]<https://lucid.app/lucidchart/47c8a9a6-1521-4aa8-ab1a-ee334a95eab6/edit?invitationId=inv_b68300c3-f34f-45f3-b66e-1b7f35541aeb>

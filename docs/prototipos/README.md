@@ -1,0 +1,1 @@
+[Link do Figma]<https://www.figma.com/design/eAhfYaHTcQT8ypTrw07htB/RuyRota---design?node-id=0-1&t=FpJGjNMz7dgb7Yzq-1>
