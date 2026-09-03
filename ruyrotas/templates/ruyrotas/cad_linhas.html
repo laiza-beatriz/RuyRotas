@@ -1,0 +1,69 @@
+{% extends 'ruyrotas/base.html' %}
+
+{% block title %}Cadastrar em Linha - RuyRotas{% endblock %}
+
+{% block content %}
+<div class="container d-flex flex-column align-items-center mt-5">
+    <h2 class="fw-extrabold text-black mb-4 text-center" style="font-weight: 800; letter-spacing: -0.5px;">
+        CADASTRAR EM LINHA
+    </h2>
+
+    <form method="POST" action="" class="w-100" style="max-width: 380px;">
+        {% csrf_token %}
+
+        <div class="custom-select-group">
+            <i class="fa-solid fa-location-dot field-icon"></i>
+            <select class="form-select border-0" name="local_partida" id="local_partida" required>
+                <option value="" disabled selected hidden>Local de partida</option>
+                <option value="ponto_a">Ponto A - Praça Pública</option>
+                <option value="ponto_b">Ponto B - Conjunto São José</option>
+                <option value="ponto_c">Ponto C - Malhada Grande</option>
+            </select>
+            <i class="fa-solid fa-caret-down arrow-icon"></i>
+        </div>
+
+        <div class="custom-select-group">
+            <i class="fa-solid fa-school field-icon"></i>
+            <select class="form-select border-0" name="local_chegada" id="local_chegada" required>
+                <option value="" disabled selected hidden>Local de chegada</option>
+                <option value="escola_1">IFRN-SPP</option>
+                <option value="campus_2">UFRN</option>
+                <option value="campus_3">UNP</option>
+                <option value="campus_4">UNINASSAU</option>
+            </select>
+            <i class="fa-solid fa-caret-down arrow-icon"></i>
+        </div>
+
+        <div class="custom-select-group">
+            <i class="fa-solid fa-clock field-icon"></i>
+            <select class="form-select border-0" name="dias_viagem" id="dias_viagem" required>
+                <option value="" disabled selected hidden>Dias da viagem</option>
+                <option value="seg_sex">Segunda à Sexta</option>
+                <option value="sabado">Sábado</option>
+                <option value="domingo">Domingo</option>
+            </select>
+            <i class="fa-solid fa-caret-down arrow-icon"></i>
+        </div>
+
+        <div class="custom-select-group">
+            <i class="fa-solid fa-clock field-icon"></i>
+            <select class="form-select border-0" name="horario_linha" id="horario_linha" required>
+                <option value="" disabled selected hidden>Horário de saída</option>
+                <option value="0700">07:00</option>
+                <option value="1200">12:00</option>
+                <option value="1600">16:00</option>
+                <option value="1800">18:00</option>
+            </select>
+            <i class="fa-solid fa-caret-down arrow-icon"></i>
+        </div>
+
+        <div class="text-center mt-3">
+            <button type="submit" class="btn btn-cadastrar">Cadastrar</button>
+        </div>
+
+        <div class="text-center mt-2">
+            <a href="#" class="link-status">ver status do cadastro</a>
+        </div>
+    </form>
+</div>
+{% endblock %}

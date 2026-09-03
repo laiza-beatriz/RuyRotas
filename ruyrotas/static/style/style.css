@@ -1,0 +1,151 @@
+body {
+    background-color: #ffffff;
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+}
+
+h2 {
+    margin-bottom: 35px !important;
+    font-size: 2.2rem !important;
+}
+
+.navbar-custom {
+    background-color: #1e1e1e;
+    padding: 10px 0;
+    min-height: 60px;
+}
+
+.navbar-brand img {
+    height: 40px; 
+    width: auto;
+    object-fit: contain;
+}
+
+.nav-link-custom {
+    color: #ffffff !important;
+    font-weight: 700;
+    font-size: 1.1rem;
+    padding: 8px 16px !important;
+}
+
+.nav-link-custom.active {
+    color: #0d6efd !important;
+}
+
+.user-section {
+    color: #ffffff;
+    font-weight: 700;
+}
+
+@media (min-width: 992px) {
+    .navbar-custom .navbar-collapse {
+        display: flex !important;
+    }
+
+    .navbar-custom .navbar-nav {
+        margin-left: auto !important;
+        margin-right: auto !important;
+    }
+
+    .border-lg-0 {
+        border: none !important;
+    }
+}
+
+@media (max-width: 991.98px) {
+    .navbar-collapse {
+        background-color: #1e1e1e;
+        padding: 15px;
+        margin-top: 10px;
+        border-radius: 6px;
+    }
+
+    .nav-link-custom {
+        display: block;
+        padding: 10px 0 !important;
+    }
+}
+
+/* ==========================================
+   3. FORMULÁRIO E INPUTS CUSTOMIZADOS
+   ========================================== */
+form {
+    max-width: 520px !important;
+    margin: 0 auto;
+}
+
+.custom-select-group {
+    background-color: #cbe0f5;
+    border-radius: 6px;
+    padding: 2px 16px;
+    margin-bottom: 24px !important;
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.custom-select-group i.field-icon {
+    font-size: 1.4rem;
+    color: #000000;
+    margin-right: 12px;
+    pointer-events: none;
+}
+
+.custom-select-group select {
+    background: transparent;
+    border: none;
+    box-shadow: none !important;
+    font-weight: 700;
+    color: #000000;
+    padding-right: 35px;
+    cursor: pointer;
+}
+
+.custom-select-group .form-select {
+    padding-top: 14px !important;
+    padding-bottom: 14px !important;
+    font-size: 1.1rem !important; 
+}
+
+.custom-select-group select:focus {
+    background: transparent;
+    color: #000000;
+}
+
+.custom-select-group i.arrow-icon {
+    position: absolute;
+    right: 16px;
+    font-size: 1.3rem;
+    color: #000000;
+    pointer-events: none;
+}
+
+.btn-cadastrar {
+    background-color: #0066cc;
+    color: #ffffff;
+    font-weight: 700;
+    border-radius: 50px;
+    width: 100%;
+    border: none;
+    transition: background-color 0.2s;
+    padding: 14px 0 !important;
+    font-size: 1.15rem !important;
+    margin-top: 10px !important;
+}
+
+.btn-cadastrar:hover {
+    background-color: #004fb3;
+    color: #ffffff;
+}
+
+.link-status {
+    color: #000000;
+    font-weight: 700;
+    text-decoration: underline;
+    display: inline-block;
+    margin-top: 16px !important;
+    font-size: 1rem !important;
+}
+
+.link-status:hover {
+    color: #333333;
+}
