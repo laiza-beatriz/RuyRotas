@@ -11,48 +11,48 @@
     <form method="POST" action="" class="w-100" style="max-width: 380px;">
         {% csrf_token %}
 
-        <div class="custom-select-group">
+        <div class="custom-select-group mb-3">
             <i class="fa-solid fa-location-dot field-icon"></i>
             <select class="form-select border-0" name="local_partida" id="local_partida" required>
                 <option value="" disabled selected hidden>Local de partida</option>
-                <option value="ponto_a">Ponto A - Praça Pública</option>
-                <option value="ponto_b">Ponto B - Conjunto São José</option>
-                <option value="ponto_c">Ponto C - Malhada Grande</option>
+                <option value="Ponto A - Praça Pública">Ponto A - Praça Pública</option>
+                <option value="Ponto B - Conjunto São José">Ponto B - Conjunto São José</option>
+                <option value="Ponto C - Malhada Grande">Ponto C - Malhada Grande</option>
             </select>
             <i class="fa-solid fa-caret-down arrow-icon"></i>
         </div>
 
-        <div class="custom-select-group">
+        <div class="custom-select-group mb-3">
             <i class="fa-solid fa-school field-icon"></i>
             <select class="form-select border-0" name="local_chegada" id="local_chegada" required>
                 <option value="" disabled selected hidden>Local de chegada</option>
-                <option value="escola_1">IFRN-SPP</option>
-                <option value="campus_2">UFRN</option>
-                <option value="campus_3">UNP</option>
-                <option value="campus_4">UNINASSAU</option>
+                <option value="IFRN-SPP">IFRN-SPP</option>
+                <option value="UFRN">UFRN</option>
+                <option value="UNP">UNP</option>
+                <option value="UNINASSAU">UNINASSAU</option>
             </select>
             <i class="fa-solid fa-caret-down arrow-icon"></i>
         </div>
 
-        <div class="custom-select-group">
-            <i class="fa-solid fa-clock field-icon"></i>
+        <div class="custom-select-group mb-3">
+            <i class="fa-solid fa-calendar-days field-icon"></i>
             <select class="form-select border-0" name="dias_viagem" id="dias_viagem" required>
                 <option value="" disabled selected hidden>Dias da viagem</option>
-                <option value="seg_sex">Segunda à Sexta</option>
-                <option value="sabado">Sábado</option>
-                <option value="domingo">Domingo</option>
+                <option value="Segunda à Sexta">Segunda à Sexta</option>
+                <option value="Sábado">Sábado</option>
+                <option value="Domingo">Domingo</option>
             </select>
             <i class="fa-solid fa-caret-down arrow-icon"></i>
         </div>
 
-        <div class="custom-select-group">
+        <div class="custom-select-group mb-3">
             <i class="fa-solid fa-clock field-icon"></i>
             <select class="form-select border-0" name="horario_linha" id="horario_linha" required>
                 <option value="" disabled selected hidden>Horário de saída</option>
-                <option value="0700">07:00</option>
-                <option value="1200">12:00</option>
-                <option value="1600">16:00</option>
-                <option value="1800">18:00</option>
+                <option value="07:00">07:00</option>
+                <option value="12:00">12:00</option>
+                <option value="16:00">16:00</option>
+                <option value="18:00">18:00</option>
             </select>
             <i class="fa-solid fa-caret-down arrow-icon"></i>
         </div>
