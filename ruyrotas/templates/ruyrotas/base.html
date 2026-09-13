@@ -34,14 +34,12 @@
                         <a class="nav-link nav-link-custom" href="#">Chat</a>
                     </li>
                 </ul>
-
-                <div class="d-flex align-items-center justify-content-center gap-2 user-section fs-5 mt-3 mt-lg-0 pt-3 pt-lg-0 border-top border-lg-0 border-secondary">
-                    <i class="fa-solid fa-circle-user fs-3"></i>
-                    <span>usuario</span>
-                    <i class="fa-solid fa-gear ms-1" style="cursor: pointer;"></i>
-                </div>
-            </div>
-        </div>
+                
+                <a href="{% url 'perfil' %}" class="d-flex align-items-center justify-content-center gap-2 user-section fs-5 mt-3 mt-lg-0 pt-3 pt-lg-0 border-top border-lg-0 border-secondary text-decoration-none text-white">
+                   <i class="fa-solid fa-circle-user fs-3"></i>
+                   <span>Perfil</span>
+                   <i class="fa-solid fa-gear ms-1"></i>
+                </a>
     </header>
 
     <main class="main-content pt-5 mt-5">

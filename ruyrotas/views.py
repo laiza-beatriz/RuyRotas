@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
-from django.contrib import messages 
-from .models import InscricaoLinha
+from django.contrib import messages
+from .models import InscricaoLinha, Perfil
 
 def index(request):
     return render(request, 'ruyrotas/index.html')
@@ -21,3 +21,6 @@ def cad_linhas(request):
 
     return render(request, 'ruyrotas/cad_linhas.html')
 
+def perfil_view(request):
+    perfil = Perfil.objects.first()
+    return render(request, 'ruyrotas/perfil.html', {'perfil': perfil})

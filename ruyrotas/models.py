@@ -11,3 +11,14 @@ class InscricaoLinha(models.Model):
 
     def __str__(self):
         return f"{self.local_partida} ➔ {self.local_chegada} ({self.horario_linha})"
+
+class Perfil(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='perfil')
+    foto = models.ImageField(upload_to='perfis/', blank=True, null=True)
+    matricula = models.CharField(max_length=30)
+    escola = models.CharField(max_length=120)
+    local_partida = models.CharField(max_length=120)
+    saida_chegada = models.CharField(max_length=120)
+
+    def __str__(self):
+        return f"Perfil de {self.user.username}"
