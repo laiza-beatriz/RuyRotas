@@ -1,11 +1,22 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden auto;
+    height: auto;
+}
+
 body {
     background-color: #ffffff;
     font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
 }
 
 h2 {
-    margin-bottom: 35px !important;
-    font-size: 2.2rem !important;
+    margin-bottom: 35px;
+    font-size: 2.2rem;
+}
+
+main, .main-content {
+    padding-top: 90px;
 }
 
 .navbar-custom {
@@ -21,33 +32,34 @@ h2 {
 }
 
 .nav-link-custom {
-    color: #ffffff !important;
+    color: #ffffff;
     font-weight: 700;
     font-size: 1.1rem;
-    padding: 8px 16px !important;
+    padding: 8px 16px;
 }
 
 .nav-link-custom.active {
-    color: #0d6efd !important;
+    color: #0d6efd;
 }
 
 .user-section {
     color: #ffffff;
     font-weight: 700;
+    border: none !important;
 }
 
 @media (min-width: 992px) {
     .navbar-custom .navbar-collapse {
-        display: flex !important;
+        display: flex;
     }
 
     .navbar-custom .navbar-nav {
-        margin-left: auto !important;
-        margin-right: auto !important;
+        margin-left: auto;
+        margin-right: auto;
     }
 
     .border-lg-0 {
-        border: none !important;
+        border: none;
     }
 }
 
@@ -61,12 +73,12 @@ h2 {
 
     .nav-link-custom {
         display: block;
-        padding: 10px 0 !important;
+        padding: 10px 0;
     }
 }
 
 form {
-    max-width: 520px !important;
+    max-width: 520px;
     margin: 0 auto;
 }
 
@@ -74,7 +86,7 @@ form {
     background-color: #cbe0f5;
     border-radius: 6px;
     padding: 2px 16px;
-    margin-bottom: 24px !important;
+    margin-bottom: 24px;
     display: flex;
     align-items: center;
     position: relative;
@@ -90,7 +102,7 @@ form {
 .custom-select-group select {
     background: transparent;
     border: none;
-    box-shadow: none !important;
+    box-shadow: none;
     font-weight: 700;
     color: #000000;
     padding-right: 35px;
@@ -98,9 +110,9 @@ form {
 }
 
 .custom-select-group .form-select {
-    padding-top: 14px !important;
-    padding-bottom: 14px !important;
-    font-size: 1.1rem !important; 
+    padding-top: 14px;
+    padding-bottom: 14px;
+    font-size: 1.1rem; 
 }
 
 .custom-select-group select:focus {
@@ -124,9 +136,9 @@ form {
     width: 100%;
     border: none;
     transition: background-color 0.2s;
-    padding: 14px 0 !important;
-    font-size: 1.15rem !important;
-    margin-top: 10px !important;
+    padding: 14px 0;
+    font-size: 1.15rem;
+    margin-top: 10px;
 }
 
 .btn-cadastrar:hover {
@@ -139,8 +151,8 @@ form {
     font-weight: 700;
     text-decoration: underline;
     display: inline-block;
-    margin-top: 16px !important;
-    font-size: 1rem !important;
+    margin-top: 16px;
+    font-size: 1rem;
 }
 
 .link-status:hover {
@@ -213,4 +225,80 @@ form {
     width: 32px;
     text-align: center;
     color: #000000;
+}
+
+.max-width-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.hero-section {
+    background-color: #000000;
+    min-height: 480px;
+    margin-top: -90px;
+}
+
+.btn-account {
+    border-color: #4a90e2;
+    color: #ffffff;
+    font-size: 0.95rem;
+    font-weight: 500;
+}
+
+.btn-account:hover {
+    background-color: #4a90e2;
+    color: #ffffff;
+}
+
+.hero-title {
+    font-size: 1.85rem;
+    line-height: 1.35;
+    font-weight: 400;
+    max-width: 650px;
+    color: #ffffff;
+}
+
+@media (min-width: 768px) {
+    .hero-title {
+        font-size: 2.1rem;
+    }
+}
+
+.btn-start {
+    background-color: #0066ff;
+    border: none;
+    font-weight: 700;
+    font-size: 1.1rem;
+    border-radius: 30px;
+}
+
+.btn-start:hover {
+    background-color: #0052cc;
+}
+
+.hero-image {
+    max-height: 320px;
+    object-fit: contain;
+}
+
+.features-section {
+    background-color: #ffffff;
+}
+
+.feature-title {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #111111;
+}
+
+.feature-text {
+    font-size: 0.92rem;
+    line-height: 1.55;
+    color: #555555;
+}
+
+.feature-icon img {
+    width: 64px; 
+    height: 64px; 
+    object-fit: contain;
 }
