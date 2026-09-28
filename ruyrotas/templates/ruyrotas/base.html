@@ -14,9 +14,10 @@
 </head>
 <body>
 
+    {% block navbar %}
     <header class="navbar navbar-expand-lg navbar-dark navbar-custom fixed-top">
         <div class="container">
-            <a class="navbar-brand d-flex align-items-center gap-2 fw-bold fs-4 text-white" href="{% url 'index' %}">
+            <a class="navbar-brand d-flex align-items-center gap-2 fw-bold fs-4 text-white">
                 <img src="{% static 'img/logo.png' %}" alt="Logo RuyRotas">
                 <span>RuyRotas</span>
             </a>
@@ -26,23 +27,26 @@
             </button>
 
             <div class="collapse navbar-collapse" id="navbarContent">
-                <ul class="navbar-nav text-center my-2 my-lg-0 fs-5">
+                <ul class="navbar-nav text-center my-2 my-lg-0 fs-5 ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link nav-link-custom active" href="{% url 'index' %}">Linhas</a>
+                        <a class="nav-link nav-link-custom active" href="">Linhas</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link nav-link-custom" href="#">Chat</a>
+                        <a class="nav-link nav-link-custom" href="">Chat</a>
                     </li>
                 </ul>
                 
-                <a href="{% url 'perfil' %}" class="d-flex align-items-center justify-content-center gap-2 user-section fs-5 mt-3 mt-lg-0 pt-3 pt-lg-0 border-top border-lg-0 border-secondary text-decoration-none text-white">
+                <a href="{% url 'perfil' %}" class="d-flex align-items-center justify-content-center gap-2 user-section fs-5 mt-3 mt-lg-0 pt-3 pt-lg-0 border-top border-lg-0 border-secondary text-decoration-none text-white ms-lg-4">
                    <i class="fa-solid fa-circle-user fs-3"></i>
                    <span>Perfil</span>
                    <i class="fa-solid fa-gear ms-1"></i>
                 </a>
+            </div>
+        </div>
     </header>
+    {% endblock %}
 
-    <main class="main-content pt-5 mt-5">
+    <main class="main-content">
         {% block content %}
         {% endblock %}
     </main>
