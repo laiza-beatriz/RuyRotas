@@ -7,11 +7,10 @@
 <div class="container my-5 pt-3">
     <div class="row justify-content-center align-items-center g-4">
         
-        <!-- Coluna Esquerda: Avatar, Nome e Matrícula -->
         <div class="col-12 col-md-5 d-flex flex-column align-items-center">
             <div class="profile-avatar-wrapper mb-3">
                 {% if perfil and perfil.foto %}
-                    <img src="{{ perfil.foto.url }}" alt="Foto de {{ perfil.user.username }}" class="w-100 h-100 object-fit-cover rounded-circle">
+                    <img src="{{ perfil.foto.url }}" alt="Foto de {{ request.user.username }}" class="w-100 h-100 object-fit-cover rounded-circle">
                 {% else %}
                     <div class="profile-avatar-placeholder">
                         <i class="fa-solid fa-user"></i>
@@ -20,14 +19,13 @@
             </div>
 
             <div class="profile-tag mb-2">
-                <strong>nome:</strong> {{ perfil.user.get_full_name|default:perfil.user.username|default:"---" }}
+                <strong>nome:</strong> {{ request.user.get_full_name|default:request.user.username|default:"---" }}
             </div>
             <div class="profile-tag">
                 <strong>matrícula:</strong> {{ perfil.matricula|default:"---" }}
             </div>
         </div>
 
-        <!-- Coluna Direita: Dados Pessoais -->
         <div class="col-12 col-md-6">
             <div class="profile-card">
                 <div class="profile-card-header">
@@ -36,7 +34,7 @@
                 <div class="profile-card-body">
                     <div class="profile-info-item">
                         <i class="fa-solid fa-envelope"></i>
-                        <span><strong>email:</strong> {{ perfil.user.email|default:"---" }}</span>
+                        <span><strong>email:</strong> {{ request.user.email|default:"---" }}</span>
                     </div>
                     <div class="profile-info-item">
                         <i class="fa-solid fa-school"></i>

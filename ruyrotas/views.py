@@ -4,8 +4,10 @@ from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.decorators import login_required, permission_required
 from .models import InscricaoLinha, Perfil, Usuario, Cadastro
 
+
 def index(request):
     return render(request, 'ruyrotas/index.html')
+
 
 @login_required
 def cad_linhas(request):
@@ -28,10 +30,11 @@ def cad_linhas(request):
 
     return render(request, 'ruyrotas/cad_linhas.html')
 
+
 @login_required
 def perfil_view(request):
     perfil, created = Perfil.objects.get_or_create(user=request.user)
-    
+
     if request.method == 'POST':
         perfil.escola = request.POST.get('escola', perfil.escola)
         perfil.matricula = request.POST.get('matricula', perfil.matricula)
@@ -44,8 +47,7 @@ def perfil_view(request):
         return redirect('perfil')
 
     return render(request, 'ruyrotas/perfil.html', {'perfil': perfil})
-<<<<<<< Updated upstream
-=======
+
 
 def cadastro(request):
     if request.user.is_authenticated:
@@ -76,13 +78,14 @@ def cadastro(request):
         if comprovante:
             Cadastro.objects.create(nome=nome, email=email, comprovante=comprovante)
 
-        Perfil.objects.create(user=usuario)
+        Perfil.objects.get_or_create(user=usuario)
 
         login(request, usuario)
         messages.success(request, 'Cadastro realizado com sucesso!')
         return redirect('index')
 
     return render(request, 'ruyrotas/cadastro.html')
+
 
 def login_view(request):
     if request.user.is_authenticated:
@@ -101,7 +104,7 @@ def login_view(request):
 
     return render(request, 'ruyrotas/login.html')
 
+
 def logout_view(request):
     logout(request)
     return redirect('login')
->>>>>>> Stashed changes
