@@ -5,41 +5,20 @@
 {% block navbar %}{% endblock %}
 
 {% block content %}
-<div class="container text-center mt-5">
-    <h1>Bem-vindo ao RuyRotas</h1>
-    <p>Selecione uma opção no menu ou cadastre-se em uma linha.</p>
-    <a href="{% url 'cad_linhas' %}" class="btn btn-primary">Cadastrar em Linha</a>
-</div>
-
 <section class="hero-section text-white py-4 px-3 px-md-5">
     <div class="container-fluid max-width-container">
         
-<div class="d-flex justify-content-between align-items-center mb-5 pt-2">
-    <div class="navbar-brand d-flex align-items-center gap-2 fw-bold fs-4 text-white">
-        <img src="{% static 'img/logo.png' %}" alt="Logo RuyRotas">
-        <span>RuyRotas</span>
-    </div>
-    <div>
-        <a href="{% url 'login' %}" class="btn btn-outline-light rounded-pill px-4">já tem uma conta?</a>
-    </div>
-
-</div>
-
-<section class="hero-section text-white py-4 px-3 px-md-5">
-    <div class="container-fluid max-width-container">
-        
-<div class="d-flex justify-content-between align-items-center mb-5 pt-2">
-    <div class="navbar-brand d-flex align-items-center gap-2 fw-bold fs-4 text-white">
-        <img src="{% static 'img/logo.png' %}" alt="Logo RuyRotas">
-        <span>RuyRotas</span>
-    </div>
-    <div>
-        <a href="" class="btn btn-outline-light rounded-pill px-4 btn-account">
-            já tem uma conta?
-        </a>
-    </div>
-
-</div>
+        <div class="d-flex justify-content-between align-items-center mb-5 pt-2">
+            <div class="navbar-brand d-flex align-items-center gap-2 fw-bold fs-4 text-white">
+                <img src="{% static 'img/logo.png' %}" alt="Logo RuyRotas">
+                <span>RuyRotas</span>
+            </div>
+            <div>
+                <a href="{% url 'login' %}" class="btn btn-outline-light rounded-pill px-4 btn-account">
+                    já tem uma conta?
+                </a>
+            </div>
+        </div>
 
         <div class="row align-items-center my-4 py-3">
             <div class="col-12 col-lg-7 mb-4 mb-lg-0">
@@ -47,12 +26,9 @@
                     O <strong>RuyRotas</strong> é a plataforma de transporte estudantil que reúne todos os seus horários e itinerários em um só lugar para você nunca mais perder a hora da rota.
                 </h1>
 
-                <a href="{% url 'cadastro' %}" class="btn btn-primary rounded-pill btn-start px-5 py-2 fs-5">começar</a>
-
-                <a href="" class="btn btn-primary rounded-pill btn-start px-5 py-2 fs-5">
+                <a href="{% url 'cadastro' %}" class="btn btn-primary rounded-pill btn-start px-5 py-2 fs-5">
                     começar
                 </a>
-
             </div>
             <div class="col-12 col-lg-5 text-center text-lg-end">
                 <img src="{% static 'img/foto-inicial.png' %}" alt="Ilustração RuyRotas" class="img-fluid hero-image">
@@ -105,5 +81,4 @@
         </div>
     </div>
 </section>
-
 {% endblock %}
