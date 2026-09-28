@@ -1,0 +1,36 @@
+{% extends 'ruyrotas/base.html' %}
+{% load static %}
+{% block navbar %}{% endblock %}
+
+{% block extra_head %}
+  <link rel="stylesheet" href="{% static 'css/login.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="login-wrapper">
+  <div class="login-container">
+    
+    <h1 class="login-title">Login</h1>
+
+    <form class="login-form" method="POST">
+      {% csrf_token %}
+
+      <div class="form-group">
+        <label for="email">email:</label>
+        <input type="email" id="email" name="email" class="form-control-custom" required />
+      </div>
+
+      <div class="form-group">
+        <label for="senha">senha:</label>
+        <input type="password" id="senha" name="senha" class="form-control-custom" required />
+      </div>
+
+      <div class="login-actions">
+        <a href="{% url 'index' %}" class="btn-action">cancelar</a>
+        <button type="submit" class="btn-action">entrar</button>
+      </div>
+    </form>
+
+  </div>
+</div>
+{% endblock %}
