@@ -5,5 +5,7 @@ urlpatterns = [
     path("", views.index, name="index"),
     path('cad-linhas/', views.cad_linhas, name='cad_linhas'),
     path('perfil/', views.perfil_view, name='perfil'),
+    path('cadastro/', views.cadastro, name='cadastro'),
+    path('login/', views.login_view, name='login'),
 ]
 

@@ -22,3 +22,13 @@ class Perfil(models.Model):
 
     def __str__(self):
         return f"Perfil de {self.user.username}"
+
+from django.db import models
+
+class Cadastro(models.Model):
+    nome = models.CharField(max_length=150)
+    email = models.EmailField(unique=True)
+    comprovante = models.FileField(upload_to='comprovantes/') 
+    
+    def __str__(self):
+        return self.nome
