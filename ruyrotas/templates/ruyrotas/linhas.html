@@ -1,0 +1,78 @@
+{% extends 'ruyrotas/base.html' %}
+{% load static %}
+
+{% block title %}Linhas - RuyRotas{% endblock %}
+
+{% block content %}
+<div class="container my-5 pt-3">
+    <div class="row align-items-center g-5">
+
+        <div class="col-12 col-md-6">
+
+            {% if linha %}
+                <h1 class="linha-titulo">SUA VIAGEM VAI INICIAR!</h1>
+            {% else %}
+                <h1 class="linha-titulo">VOCÊ AINDA NÃO TEM LINHA</h1>
+            {% endif %}
+
+            {% if minhas_linhas.count > 1 %}
+            <form method="get" class="d-flex gap-2 mb-3">
+                <select name="linha" class="form-select form-select-sm">
+                    {% for l in minhas_linhas %}
+                        <option value="{{ l.pk }}" {% if l.pk == linha.pk %}selected{% endif %}>
+                            {{ l.partida }} → {{ l.chegada }}
+                        </option>
+                    {% endfor %}
+                </select>
+                <button type="submit" class="btn btn-primary btn-sm fw-bold">ver</button>
+            </form>
+            {% endif %}
+            <details class="linha-dropdown">
+                <summary>
+                    <i class="fa-solid fa-location-dot linha-icone"></i>
+                    <span>Local de partida</span>
+                    <i class="fa-solid fa-caret-down linha-seta"></i>
+                </summary>
+                <div class="linha-dropdown-corpo">{{ linha.partida.nome|default:"---" }}</div>
+            </details>
+
+            <details class="linha-dropdown">
+                <summary>
+                    <i class="fa-solid fa-school linha-icone"></i>
+                    <span>Local de chegada</span>
+                    <i class="fa-solid fa-caret-down linha-seta"></i>
+                </summary>
+                <div class="linha-dropdown-corpo">{{ linha.chegada.nome|default:"---" }}</div>
+            </details>
+
+            <details class="linha-dropdown">
+                <summary>
+                    <i class="fa-solid fa-clock linha-icone"></i>
+                    <span>Ver horário</span>
+                    <i class="fa-solid fa-caret-down linha-seta"></i>
+                </summary>
+                <div class="linha-dropdown-corpo">
+                    {% if linha %}
+                        <div><strong>dias:</strong> {{ linha.get_dias_display }}</div>
+                        <div><strong>saída:</strong> {{ linha.horario_saida|time:"H:i" }}</div>
+                        <div><strong>chegada:</strong> {{ linha.horario_chegada|time:"H:i" }}</div>
+                    {% else %}
+                        ---
+                    {% endif %}
+                </div>
+            </details>
+
+            <p class="linha-cadastro mt-3 mb-0">
+                Ainda não está cadastrado em uma linha?<br>
+                <a href="{% url 'cad_linhas' %}">Cadastrar em linha</a>
+            </p>
+        </div>
+
+        <div class="col-12 col-md-6">
+            <img src="{% static 'img/map_linha.gif' %}" alt="Mapa da rota" class="img-fluid w-100 rounded shadow-sm" style="max-height: 420px; object-fit: cover;">
+            <p class="fw-bold mt-1 mb-0">Motorista (nome) chegará em 50 minutos</p>
+        </div>
+
+    </div>
+</div>
+{% endblock %}

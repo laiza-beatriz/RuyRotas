@@ -584,3 +584,69 @@ form {
     background-color: #c9ddf2;
     box-shadow: 0 0 0 0.2rem rgba(0, 86, 179, 0.35);
 }
+
+.linha-titulo {
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: #1f1f1f;
+    margin-bottom: 0.5rem;
+}
+
+.linha-dropdown {
+    background-color: #c9ddf2;
+    border-radius: 6px;
+    margin-bottom: 1.25rem;
+    color: #1f1f1f;
+}
+
+.linha-dropdown summary {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.25rem;
+    font-size: 1.5rem;
+    font-weight: 700;
+    cursor: pointer;
+    list-style: none;
+}
+
+.linha-dropdown summary::-webkit-details-marker {
+    display: none;
+}
+
+.linha-dropdown summary span {
+    flex: 1;
+}
+
+.linha-icone {
+    width: 2rem;
+    text-align: center;
+}
+
+.linha-seta {
+    transition: transform 0.2s;
+}
+
+.linha-dropdown[open] .linha-seta {
+    transform: rotate(180deg);
+}
+
+.linha-dropdown-corpo {
+    padding: 0 1.25rem 1rem 4.25rem;
+    font-size: 1.15rem;
+    font-weight: 600;
+}
+
+.linha-cadastro {
+    font-weight: 600;
+    color: #1f1f1f;
+}
+
+.linha-cadastro a {
+    color: #0056b3;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.linha-cadastro a:hover {
+    text-decoration: underline;

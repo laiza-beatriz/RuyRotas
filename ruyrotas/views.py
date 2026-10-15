@@ -9,6 +9,19 @@ from .forms import PerfilForm
 def index(request):
     return render(request, 'ruyrotas/index.html')
 
+@login_required
+def linhas(request):
+    user = request.user
+    linha_usuario = None
+
+    if hasattr(user, 'linha'):
+        linha_usuario = user.linha
+    elif hasattr(user, 'perfil') and hasattr(user.perfil, 'linha'):
+        linha_usuario = user.perfil.linha
+
+    return render(request, 'ruyrotas/linhas.html', {
+        'linha': linha_usuario
+    })
 
 @login_required
 def cad_linhas(request):
@@ -81,6 +94,8 @@ def cadastro(request):
 
         Perfil.objects.get_or_create(user=usuario)
 
+        return redirect('linhas')
+       
         login(request, usuario)
         messages.success(request, 'Cadastro realizado com sucesso!')
         return redirect('index')
@@ -129,4 +144,5 @@ def editar_perfil(request):
     else:
         form = PerfilForm(instance=perfil, user=request.user)
 
+    return render(request, "ruyrotas/editar_perfil.html", {"form": form, "perfil": perfil})
     return render(request, "ruyrotas/editar_perfil.html", {"form": form, "perfil": perfil})
