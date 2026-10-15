@@ -1,0 +1,71 @@
+{% extends 'ruyrotas/base.html' %}
+{% load static %}
+
+{% block title %}Editar perfil - RuyRotas{% endblock %}
+
+{% block content %}
+<div class="container my-5 pt-3">
+    <div class="row justify-content-center">
+        <div class="col-12 col-md-8 col-lg-6">
+            <div class="card border-0 rounded-4 overflow-hidden shadow">
+
+                <div class="edit-modal-header text-center py-3">
+                    <h2 class="fw-bold text-uppercase m-0">Editar perfil</h2>
+                </div>
+
+                <form method="post" enctype="multipart/form-data" novalidate>
+                    {% csrf_token %}
+
+                    <div class="card-body px-4 px-md-5 py-4">
+
+                        {% if form.non_field_errors %}
+                            <div class="alert alert-danger">{{ form.non_field_errors }}</div>
+                        {% endif %}
+
+                        <p class="fw-bold fs-5 mb-2">Foto de perfil</p>
+                        <div class="d-flex align-items-center gap-4 mb-4">
+                            <div class="edit-avatar">
+                                {% if perfil.foto %}
+                                    <img src="{{ perfil.foto.url }}" alt="Foto atual" class="w-100 h-100 object-fit-cover rounded-circle">
+                                {% else %}
+                                    <i class="fa-solid fa-user"></i>
+                                {% endif %}
+                            </div>
+
+                            <div>
+                                <label for="id_foto" class="form-label fw-bold mb-1">adicionar foto</label>
+                                <input type="file" name="foto" id="id_foto" accept="image/*" class="form-control">
+                            </div>
+                        </div>
+                        {% for erro in form.foto.errors %}
+                            <div class="text-danger small mb-2">{{ erro }}</div>
+                        {% endfor %}
+
+                        <div class="mb-3">
+                            <label for="{{ form.nome.id_for_label }}" class="form-label fw-bold">nome:</label>
+                            {{ form.nome }}
+                            {% for erro in form.nome.errors %}
+                                <div class="text-danger small">{{ erro }}</div>
+                            {% endfor %}
+                        </div>
+
+                        <div class="mb-4">
+                            <label for="{{ form.matricula.id_for_label }}" class="form-label fw-bold">matrícula:</label>
+                            {{ form.matricula }}
+                            {% for erro in form.matricula.errors %}
+                                <div class="text-danger small">{{ erro }}</div>
+                            {% endfor %}
+                        </div>
+
+                        <div class="d-flex justify-content-end gap-2">
+                            <a href="{% url 'perfil' %}" class="btn btn-primary fw-bold">cancelar</a>
+                            <button type="submit" class="btn btn-primary fw-bold">salvar</button>
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

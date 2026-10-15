@@ -3,6 +3,7 @@ from django.contrib import messages
 from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.decorators import login_required, permission_required
 from .models import InscricaoLinha, Perfil, Usuario, Cadastro
+from .forms import PerfilForm
 
 
 def index(request):
@@ -108,3 +109,24 @@ def login_view(request):
 def logout_view(request):
     logout(request)
     return redirect('login')
+
+@login_required
+def perfil(request):
+    perfil, _ = Perfil.objects.get_or_create(user=request.user)
+    return render(request, "ruyrotas/perfil.html", {"perfil": perfil})
+
+
+@login_required
+def editar_perfil(request):
+    perfil, _ = Perfil.objects.get_or_create(user=request.user)
+
+    if request.method == "POST":
+        form = PerfilForm(request.POST, request.FILES, instance=perfil, user=request.user)
+        if form.is_valid():
+            form.save()
+            messages.success(request, "Perfil atualizado com sucesso!")
+            return redirect("perfil")
+    else:
+        form = PerfilForm(instance=perfil, user=request.user)
+
+    return render(request, "ruyrotas/editar_perfil.html", {"form": form, "perfil": perfil})
