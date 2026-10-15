@@ -49,9 +49,11 @@
                         <span><strong>saída e chegada:</strong> {{ perfil.saida_chegada|default:"---" }}</span>
                     </div>
                 </div>
+                    <a href="{% url 'editar_perfil' %}" class="btn btn-primary fw-bold mt-3 align-self-start">
+                      <i class="fa-solid fa-pencil me-1"></i> editar
+                    </a>
             </div>
         </div>
-
     </div>
 </div>
 {% endblock %}

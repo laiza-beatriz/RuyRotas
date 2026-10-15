@@ -2,6 +2,7 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from .models import Usuario
+from .models import Perfil
 
 class CadastroForm(UserCreationForm):
     first_name = forms.CharField(
@@ -36,3 +37,35 @@ class LoginForm(AuthenticationForm):
         label="Senha",
         widget=forms.PasswordInput(attrs={'class': 'form-control-custom', 'placeholder': 'Digite sua senha'})
     )
+
+class PerfilForm(forms.ModelForm):
+    nome = forms.CharField(
+        max_length=150,
+        label="nome",
+        widget=forms.TextInput(attrs={"class": "form-control profile-input", "placeholder": "seu nome"}),
+    )
+
+    class Meta:
+        model = Perfil
+        fields = ["foto", "matricula"]
+        widgets = {
+            "foto": forms.FileInput(attrs={"class": "d-none", "accept": "image/*", "id": "id_foto"}),
+            "matricula": forms.TextInput(attrs={"class": "form-control profile-input", "placeholder": "sua matrícula"}),
+        }
+
+    def __init__(self, *args, user=None, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.user = user
+        if user:
+            self.fields["nome"].initial = user.get_full_name() or user.username
+
+    def save(self, commit=True):
+        perfil = super().save(commit=False)
+        nome = self.cleaned_data["nome"].strip()
+        partes = nome.split(" ", 1)
+        self.user.first_name = partes[0]
+        self.user.last_name = partes[1] if len(partes) > 1 else ""
+        if commit:
+            self.user.save()
+            perfil.save()
+        return perfil
