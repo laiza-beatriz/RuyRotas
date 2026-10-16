@@ -4,6 +4,7 @@ from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.decorators import login_required
 from .models import InscricaoLinha, Perfil, Usuario, Cadastro
 from .forms import PerfilForm
+from django.core.paginator import Paginator
 
 
 def index(request):
@@ -14,12 +15,15 @@ def index(request):
 
 @login_required
 def linhas(request):
-    linha_usuario = InscricaoLinha.objects.filter(usuario=request.user).first()
+    inscricoes = InscricaoLinha.objects.filter(usuario=request.user)
+
+    linha_usuario = inscricoes.filter(status="aprovada").first()
+    pendente = inscricoes.filter(status="pendente").first()
 
     return render(request, 'ruyrotas/linhas.html', {
-        'linha': linha_usuario
+        'linha': linha_usuario,
+        'pendente': pendente,
     })
-
 
 @login_required
 def cad_linhas(request):
@@ -124,3 +128,34 @@ def editar_perfil(request):
         form = PerfilForm(instance=perfil, user=request.user)
 
     return render(request, 'ruyrotas/editar_perfil.html', {'form': form, 'perfil': perfil})
+
+@login_required
+def solicitacoes(request):
+    if not request.user.is_staff:
+        return redirect("linhas")
+
+    lista = InscricaoLinha.objects.filter(status="pendente")
+    paginator = Paginator(lista, 5)
+    numero_da_pagina = request.GET.get("pagina")
+    pagina = paginator.get_page(numero_da_pagina)
+
+    return render(request, "ruyrotas/solicitacoes.html", {"pagina": pagina})
+
+@login_required
+def detalhe_solicitacao(request, pk):
+    if not request.user.is_staff:
+        return redirect("linhas")
+
+    s = get_object_or_404(InscricaoLinha, pk=pk)
+
+    if request.method == "POST":
+        if request.POST.get("acao") == "aceitar":
+            s.status = "aprovada"
+            messages.success(request, "Solicitação aceita.")
+        else:
+            s.status = "recusada"
+            messages.warning(request, "Solicitação recusada.")
+        s.save()
+        return redirect("solicitacoes")
+
+    return render(request, "ruyrotas/detalhe_solicitacao.html", {"s": s})

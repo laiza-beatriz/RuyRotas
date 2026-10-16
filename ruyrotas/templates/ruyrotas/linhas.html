@@ -3,6 +3,13 @@
 
 {% block title %}Linhas - RuyRotas{% endblock %}
 
+{% if pendente %}
+    <div class="alert alert-warning">
+        Sua solicitação para {{ pendente.local_partida }} - {{ pendente.local_chegada }}
+        está aguardando aprovação do administrador.
+    </div>
+{% endif %}
+
 {% block content %}
 <div class="container my-5 pt-3">
     <div class="row align-items-center g-5">
@@ -33,8 +40,8 @@
                     <span>Local de partida</span>
                     <i class="fa-solid fa-caret-down linha-seta"></i>
                 </summary>
-                <div class="linha-dropdown-corpo">{{ linha.partida.nome|default:"---" }}</div>
-            </details>
+                <div class="linha-dropdown-corpo">{{ linha.local_partida|default:"---" }}</div>
+           </details>
 
             <details class="linha-dropdown">
                 <summary>
@@ -42,7 +49,7 @@
                     <span>Local de chegada</span>
                     <i class="fa-solid fa-caret-down linha-seta"></i>
                 </summary>
-                <div class="linha-dropdown-corpo">{{ linha.chegada.nome|default:"---" }}</div>
+                <div class="linha-dropdown-corpo">{{ linha.local_chegada|default:"---" }}</div>
             </details>
 
             <details class="linha-dropdown">
@@ -53,9 +60,8 @@
                 </summary>
                 <div class="linha-dropdown-corpo">
                     {% if linha %}
-                        <div><strong>dias:</strong> {{ linha.get_dias_display }}</div>
-                        <div><strong>saída:</strong> {{ linha.horario_saida|time:"H:i" }}</div>
-                        <div><strong>chegada:</strong> {{ linha.horario_chegada|time:"H:i" }}</div>
+                        <div><strong>dias:</strong> {{ linha.dias_viagem }}</div>
+                        <div><strong>saída:</strong> {{ linha.horario_linha }}</div>
                     {% else %}
                         ---
                     {% endif %}

@@ -650,3 +650,69 @@ form {
 
 .linha-cadastro a:hover {
     text-decoration: underline;
+}
+
+.sol-item {
+    background-color: #c9ddf2;
+    border-radius: 4px;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #1f1f1f;
+}
+
+.sol-olho {
+    color: #8a8f94;
+    font-size: 1.8rem;
+    text-decoration: none;
+}
+
+.sol-olho:hover {
+    color: #0056b3;
+}
+
+.sol-header {
+    background-color: #c9ddf2;
+}
+
+.sol-paginacao {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.4rem;
+    width: fit-content;
+    margin: 1.5rem auto 0;
+    background-color: #cfd2d5;
+    border-radius: 4px;
+    padding: 0.4rem 0.6rem;
+}
+
+.sol-pagina {
+    min-width: 2.2rem;
+    height: 2.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #5c6063;
+    color: #fff;
+    border-radius: 4px;
+    font-size: 1.3rem;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.sol-pagina:hover {
+    background-color: #3d4348;
+    color: #fff;
+}
+
+.sol-pagina.ativa {
+    background-color: #0056b3;
+}
+
+.sol-seta {
+    color: #fff;
+    font-size: 1.3rem;
+    font-weight: 700;
+    text-decoration: none;
+    padding: 0 0.3rem;
+}

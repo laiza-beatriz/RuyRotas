@@ -1,0 +1,53 @@
+{% extends 'ruyrotas/base.html' %}
+{% load static %}
+
+{% block title %}Solicitações - RuyRotas{% endblock %}
+
+
+{% block content %}
+<div class="container my-4">
+    <h1 class="text-center fw-bold mb-4">SOLICITAÇÕES DE CADASTRO</h1>
+
+    <div class="row fw-bold fs-4 text-primary px-3">
+        <div class="col-3">nome</div>
+        <div class="col-3">matrícula</div>
+        <div class="col-5">linha cadastrada</div>
+        <div class="col-1"></div>
+    </div>
+
+    {% for s in pagina %}
+    <div class="row sol-item align-items-center mx-0 mb-3 py-3">
+        <div class="col-3">{{ s.usuario.get_full_name|default:s.usuario.username }}</div>
+        <div class="col-3">{{ s.usuario.matricula|default:"---" }}</div>
+        <div class="col-5">{{ s.local_partida }} - {{ s.local_chegada }}</div>
+        <div class="col-1">
+            <a href="{% url 'detalhe_solicitacao' s.pk %}" class="sol-olho">
+                <i class="fa-solid fa-eye"></i>
+            </a>
+        </div>
+    </div>
+    {% empty %}
+    <p class="text-center text-muted my-5">Nenhuma solicitação pendente.</p>
+    {% endfor %}
+
+    {% if pagina.paginator.num_pages > 1 %}
+    <div class="sol-paginacao">
+        {% if pagina.has_previous %}
+            <a href="?pagina={{ pagina.previous_page_number }}" class="sol-seta">&lt;</a>
+        {% endif %}
+
+        {% for n in pagina.paginator.page_range %}
+            {% if n == pagina.number %}
+                <span class="sol-pagina ativa">{{ n }}</span>
+            {% else %}
+                <a href="?pagina={{ n }}" class="sol-pagina">{{ n }}</a>
+            {% endif %}
+        {% endfor %}
+
+        {% if pagina.has_next %}
+            <a href="?pagina={{ pagina.next_page_number }}" class="sol-seta">&gt;</a>
+        {% endif %}
+    </div>
+    {% endif %}
+</div>
+{% endblock %}
