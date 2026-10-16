@@ -1,0 +1,39 @@
+{% extends 'ruyrotas/base.html' %}
+{% load static %}
+
+{% block title %}Solicitação - RuyRotas{% endblock %}
+
+{% block content %}
+<div class="container my-5">
+    <div class="row justify-content-center">
+        <div class="col-12 col-md-8 col-lg-6">
+            <div class="card border-0 shadow">
+
+                <div class="sol-header text-center py-3">
+                    <h2 class="fw-bold m-0">SOLICITAÇÃO DE CADASTRO</h2>
+                </div>
+
+                <div class="card-body p-4">
+                    <p><strong>nome:</strong> {{ s.usuario.get_full_name|default:s.usuario.username }}</p>
+                    <p><strong>matrícula:</strong> {{ s.usuario.matricula|default:"---" }}</p>
+                    <p><strong>email:</strong> {{ s.usuario.email|default:"---" }}</p>
+                    <hr>
+                    <p><strong>partida:</strong> {{ s.local_partida }}</p>
+                    <p><strong>chegada:</strong> {{ s.local_chegada }}</p>
+                    <p><strong>dias:</strong> {{ s.dias_viagem }}</p>
+                    <p><strong>horário de saída:</strong> {{ s.horario_linha }}</p>
+                    {% if s.status == "pendente" %}
+                    <form method="post" class="d-flex justify-content-end gap-2 mt-4">
+                        {% csrf_token %}
+                        <a href="{% url 'solicitacoes' %}" class="btn btn-secondary fw-bold">voltar</a>
+                        <button type="submit" name="acao" value="recusar" class="btn btn-danger fw-bold">recusar</button>
+                        <button type="submit" name="acao" value="aceitar" class="btn btn-primary fw-bold">aceitar</button>
+                    </form>
+                    {% endif %}
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

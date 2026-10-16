@@ -35,11 +35,18 @@ class Perfil(models.Model):
         return f"Perfil de {self.user.get_full_name() or self.user.username}"
 
 class InscricaoLinha(models.Model):
+    STATUS = [
+        ("pendente", "Pendente"),
+        ("aprovada", "Aprovada"),
+        ("recusada", "Recusada"),
+    ]
+    
     usuario = models.ForeignKey(Usuario, on_delete=models.CASCADE, null=True, blank=True)
     local_partida = models.CharField(max_length=100)
     local_chegada = models.CharField(max_length=100)
     dias_viagem = models.CharField(max_length=50)
     horario_linha = models.CharField(max_length=10)
+    status = models.CharField(max_length=10, choices=STATUS, default="pendente")
     data_cadastro = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):

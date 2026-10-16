@@ -35,6 +35,9 @@
                         <a class="nav-link nav-link-custom" href="">Chat</a>
                     </li>
                 </ul>
+                {% if user.is_staff %}
+                   <a class="nav-link nav-link-custom" href="{% url 'solicitacoes' %}">Solicitações</a>
+                {% endif %}
                 
                 <a href="{% url 'perfil' %}" class="d-flex align-items-center justify-content-center gap-2 user-section fs-5 mt-3 mt-lg-0 pt-3 pt-lg-0 border-top border-lg-0 border-secondary text-decoration-none text-white ms-lg-4">
                    {% if user.is_authenticated and user.perfil.foto %}
