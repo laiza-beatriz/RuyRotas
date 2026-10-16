@@ -30,7 +30,6 @@
                 <ul class="navbar-nav text-center my-2 my-lg-0 fs-5 ms-auto">
                     <li class="nav-item">
                         <a class="nav-link nav-link-custom active" href="{% url 'linhas' %}">Linhas</a>
-                        <a class="nav-link nav-link-custom active" href="">Linhas</a
                     </li>
                     <li class="nav-item">
                         <a class="nav-link nav-link-custom" href="">Chat</a>
@@ -38,16 +37,41 @@
                 </ul>
                 
                 <a href="{% url 'perfil' %}" class="d-flex align-items-center justify-content-center gap-2 user-section fs-5 mt-3 mt-lg-0 pt-3 pt-lg-0 border-top border-lg-0 border-secondary text-decoration-none text-white ms-lg-4">
-                   <i class="fa-solid fa-circle-user fs-3"></i>
+                   {% if user.is_authenticated and user.perfil.foto %}
+                       <img src="{{ user.perfil.foto.url }}" alt="Foto de Perfil" class="rounded-circle" style="width: 32px; height: 32px; object-fit: cover;">
+                   {% else %}
+                       <i class="fa-solid fa-circle-user fs-3"></i>
+                   {% endif %}
                    <span>Perfil</span>
                    <i class="fa-solid fa-gear ms-1"></i>
                 </a>
+
+                {% if user.is_authenticated %}
+                    <li class="nav-item d-flex align-items-center">
+                        <a class="btn btn-outline-danger ms-2" href="{% url 'logout' %}">Sair</a>
+                    </li>
+                {% endif %}
             </div>
         </div>
     </header>
     {% endblock %}
 
     <main class="main-content">
+        {% if messages %}
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-12 col-md-8">
+                        {% for message in messages %}
+                            <div class="alert alert-{% if message.tags == 'error' %}danger{% else %}{{ message.tags|default:'success' }}{% endif %} alert-dismissible fade show shadow-sm" role="alert">
+                                {{ message }}
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+
         {% block content %}
         {% endblock %}
     </main>
